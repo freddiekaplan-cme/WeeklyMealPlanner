@@ -70,8 +70,16 @@ function App() {
 			<button onClick={planWeek}>{buttonText}</button>
 
 			<h2>Choose from existing lists</h2>
-			<Lists listName={vegetarian.name} listArray={vegetarian.list} />
-			<Lists listName={cheap.name} listArray={cheap.list} />
+			<Lists
+				listName={vegetarian.name}
+				listArray={vegetarian.list}
+				chooseList={setInputValue}
+			/>
+			<Lists
+				listName={cheap.name}
+				listArray={cheap.list}
+				chooseList={setInputValue}
+			/>
 		</>
 	)
 }

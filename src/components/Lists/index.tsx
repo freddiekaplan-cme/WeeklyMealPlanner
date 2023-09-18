@@ -1,24 +1,22 @@
 interface ListProps {
 	listName: string
 	listArray: string[]
+	chooseList: (value: string) => void
 }
 
-const Lists = ({ listName, listArray }: ListProps) => {
-	const readableList = listArray.map((item, index) => {
-		if (index !== listArray.length - 1) {
-			return `${item}, `
-		}
-		return item
-	})
+const Lists = ({ listName, listArray, chooseList }: ListProps) => {
+	const readableList = listArray.join(", ")
 
-	const useList = (): void => {}
+	const handleButtonClick = () => {
+		chooseList(readableList)
+	}
 
 	return (
 		<>
 			<h3>{listName}</h3>
 			<p>{readableList}</p>
 			<p>
-				<button onClick={useList}>Plan with this list</button>
+				<button onClick={handleButtonClick}>Use List</button>
 			</p>
 		</>
 	)
