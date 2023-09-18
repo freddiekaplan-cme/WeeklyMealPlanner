@@ -1,19 +1,36 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
-function Inputs({ onInputChange }: { onInputChange: (value: string) => void }) {
-	const [inputValue, setInputValue] = useState<string>("")
+interface InputsProps {
+	inputValue: string
+	onInputChange: (value: string) => void
+	chooseList: (list: string) => void
+	changeButtonText: (value: string) => void
+}
+
+function Inputs({
+	inputValue,
+	onInputChange,
+	chooseList,
+	changeButtonText,
+}: InputsProps) {
+	const [localInputValue, setLocalInputValue] = useState<string>("")
+
+	useEffect(() => {
+		setLocalInputValue(inputValue)
+	}, [inputValue])
 
 	const handleInputChange = (
 		e: React.ChangeEvent<HTMLInputElement>,
 	): void => {
 		const newValue = e.target.value
-		setInputValue(newValue)
+		setLocalInputValue(newValue)
 		onInputChange(newValue)
 	}
 
 	const clearInput = (): void => {
-		setInputValue("")
+		setLocalInputValue("")
 		onInputChange("")
+		changeButtonText("setAsPlan")
 	}
 
 	return (
@@ -28,7 +45,7 @@ function Inputs({ onInputChange }: { onInputChange: (value: string) => void }) {
 				<input
 					type="text"
 					id="myInput"
-					value={inputValue}
+					value={localInputValue}
 					onChange={handleInputChange}
 					placeholder="lasagna, salad, noodles"
 				/>

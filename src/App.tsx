@@ -27,6 +27,11 @@ function App() {
 		return shuffledArray
 	}
 
+	const changeButtonText = (listButton: string | null) => {
+		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
+		listButton === "setAsPlan" ? setButtonText(buttonPlan) : listButton
+	}
+
 	const planWeek = (): void => {
 		const inputMeals = inputValue
 			.split(",")
@@ -44,10 +49,7 @@ function App() {
 		].slice(0, 7)
 
 		setMeal(filledMealArray)
-
-		console.log(inputValue)
-
-		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
+		changeButtonText("")
 	}
 
 	const handleInputChange = (newInputValue: string) => {
@@ -66,19 +68,26 @@ function App() {
 				sat={"Saturday: " + meal[5]}
 				sun={"Sunday: " + meal[6]}
 			/>
-			<Inputs onInputChange={handleInputChange} />
+			<Inputs
+				inputValue={inputValue}
+				onInputChange={handleInputChange}
+				chooseList={setInputValue}
+				changeButtonText={changeButtonText}
+			/>
 			<button onClick={planWeek}>{buttonText}</button>
 
 			<h2>Choose from existing lists</h2>
 			<Lists
 				listName={vegetarian.name}
 				listArray={vegetarian.list}
-				chooseList={setInputValue}
+				chooseList={handleInputChange}
+				changeButtonText={changeButtonText}
 			/>
 			<Lists
 				listName={cheap.name}
 				listArray={cheap.list}
 				chooseList={setInputValue}
+				changeButtonText={changeButtonText}
 			/>
 		</>
 	)

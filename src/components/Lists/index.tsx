@@ -2,13 +2,20 @@ interface ListProps {
 	listName: string
 	listArray: string[]
 	chooseList: (value: string) => void
+	changeButtonText: (value: string) => void
 }
 
-const Lists = ({ listName, listArray, chooseList }: ListProps) => {
+const Lists = ({
+	listName,
+	listArray,
+	chooseList,
+	changeButtonText,
+}: ListProps) => {
 	const readableList = listArray.join(", ")
 
 	const handleButtonClick = () => {
 		chooseList(readableList)
+		changeButtonText("setAsPlan")
 	}
 
 	return (
