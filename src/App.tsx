@@ -3,7 +3,7 @@ import Header from "@/Header"
 import Week from "@/Week"
 import Inputs from "@/Inputs"
 import Lists from "@/Lists"
-import { vegetarian, cheap } from "../data/meal-lists"
+import { vegetarian, cheap, popular } from "../data/meal-lists"
 import "./App.css"
 
 function App() {
@@ -78,9 +78,15 @@ function App() {
 
 			<h2>Choose from existing lists</h2>
 			<Lists
+				listName={popular.name}
+				listArray={popular.list}
+				chooseList={handleInputChange}
+				changeButtonText={changeButtonText}
+			/>
+			<Lists
 				listName={vegetarian.name}
 				listArray={vegetarian.list}
-				chooseList={handleInputChange}
+				chooseList={setInputValue}
 				changeButtonText={changeButtonText}
 			/>
 			<Lists
