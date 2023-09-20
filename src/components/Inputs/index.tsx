@@ -35,22 +35,29 @@ function Inputs({
 
 	return (
 		<div>
-			<h2>List your meals</h2>
+			<h2 className="text-lg font-bold">List your meals</h2>
 			<p>
 				<label htmlFor="myInput">
-					List at least seven meals, separate with commas:
+					Write or paste a list of at least seven meals, separate with
+					commas:
 				</label>
 			</p>
-			<p>
+			<div className="mt-4 h-10 flex items-center">
 				<input
+					className="rounded-md border-green-800 border-2 p-2 h-full flex-grow sm:max-w-xl"
 					type="text"
 					id="myInput"
 					value={localInputValue}
 					onChange={handleInputChange}
 					placeholder="lasagna, salad, noodles"
 				/>
-				<button onClick={clearInput}>Clear</button>
-			</p>
+				<button
+					className="text-sm rounded-md ml-2 hover:bg-red-400 p-2 bg-red-500 text-white h-full flex-grow-0"
+					onClick={clearInput}
+				>
+					Clear
+				</button>
+			</div>
 		</div>
 	)
 }

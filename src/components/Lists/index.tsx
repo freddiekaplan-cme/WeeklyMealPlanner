@@ -19,13 +19,18 @@ const Lists = ({
 	}
 
 	return (
-		<>
-			<h3>{listName}</h3>
+		<div className="py-4 max-w-xl">
+			<h3 className="text-md font-bold">{listName}</h3>
 			<p>{readableList}</p>
 			<p>
-				<button onClick={handleButtonClick}>Use List</button>
+				<button
+					className="rounded-md mt-4 bg-amber-400 hover:bg-amber-300 w-36 h-12"
+					onClick={handleButtonClick}
+				>
+					Use List
+				</button>
 			</p>
-		</>
+		</div>
 	)
 }
 

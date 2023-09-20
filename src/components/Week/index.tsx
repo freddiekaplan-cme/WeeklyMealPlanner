@@ -10,15 +10,36 @@ interface DayProp {
 
 const Week = ({ mon, tue, wed, thu, fri, sat, sun }: DayProp) => {
 	return (
-		<>
-			<div>{mon}</div>
-			<div>{tue}</div>
-			<div>{wed}</div>
-			<div>{thu}</div>
-			<div>{fri}</div>
-			<div>{sat}</div>
-			<div>{sun}</div>
-		</>
+		<div className="my-8 font-bold">
+			<div className="m-2">
+				<span className="w-12 inline-block">Mon: </span>
+				<span className="font-normal">{mon}</span>
+			</div>
+			<div className="m-2">
+				<span className="w-12 inline-block">Tue: </span>
+				<span className="font-normal">{tue}</span>
+			</div>
+			<div className="m-2">
+				<span className="w-12 inline-block">Wed: </span>
+				<span className="font-normal">{wed}</span>
+			</div>
+			<div className="m-2">
+				<span className="w-12 inline-block">Thu: </span>
+				<span className="font-normal">{thu}</span>
+			</div>
+			<div className="m-2">
+				<span className="w-12 inline-block">Fri: </span>
+				<span className="font-normal">{fri}</span>
+			</div>
+			<div className="m-2">
+				<span className="w-12 inline-block">Sat: </span>
+				<span className="font-normal">{sat}</span>
+			</div>
+			<div className="m-2">
+				<span className="w-12 inline-block">Sun: </span>
+				<span className="font-normal">{sun}</span>
+			</div>
+		</div>
 	)
 }
 

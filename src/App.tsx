@@ -3,8 +3,8 @@ import Header from "@/Header"
 import Week from "@/Week"
 import Inputs from "@/Inputs"
 import Lists from "@/Lists"
+import Footer from "@/Footer"
 import { vegetarian, cheap, popular } from "../data/meal-lists"
-import "./App.css"
 
 function App() {
 	const [meal, setMeal] = useState<string[]>(["", "", "", "", "", "", ""])
@@ -57,45 +57,58 @@ function App() {
 	}
 
 	return (
-		<>
-			<Header title="Weekly Meal Planner" />
-			<Week
-				mon={"Monday: " + meal[0]}
-				tue={"Tuesday: " + meal[1]}
-				wed={"Wednesday: " + meal[2]}
-				thu={"Thursday: " + meal[3]}
-				fri={"Friday: " + meal[4]}
-				sat={"Saturday: " + meal[5]}
-				sun={"Sunday: " + meal[6]}
-			/>
-			<Inputs
-				inputValue={inputValue}
-				onInputChange={handleInputChange}
-				chooseList={setInputValue}
-				changeButtonText={changeButtonText}
-			/>
-			<button onClick={planWeek}>{buttonText}</button>
+		<div>
+			<div className="font-dm px-8 md:px-12 text-amber-950 bg-amber-50">
+				<Header
+					title="Weekly Meal Planner"
+					subtitle="~ What's for dinner tonight? ~"
+				/>
+				<Week
+					mon={meal[0]}
+					tue={meal[1]}
+					wed={meal[2]}
+					thu={meal[3]}
+					fri={meal[4]}
+					sat={meal[5]}
+					sun={meal[6]}
+				/>
+				<Inputs
+					inputValue={inputValue}
+					onInputChange={handleInputChange}
+					chooseList={setInputValue}
+					changeButtonText={changeButtonText}
+				/>
+				<button
+					className="rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
+					onClick={planWeek}
+				>
+					{buttonText}
+				</button>
 
-			<h2>Choose from existing lists</h2>
-			<Lists
-				listName={popular.name}
-				listArray={popular.list}
-				chooseList={handleInputChange}
-				changeButtonText={changeButtonText}
-			/>
-			<Lists
-				listName={vegetarian.name}
-				listArray={vegetarian.list}
-				chooseList={setInputValue}
-				changeButtonText={changeButtonText}
-			/>
-			<Lists
-				listName={cheap.name}
-				listArray={cheap.list}
-				chooseList={setInputValue}
-				changeButtonText={changeButtonText}
-			/>
-		</>
+				<h2 className="text-lg mt-8 font-bold">
+					Choose from existing lists
+				</h2>
+				<Lists
+					listName={popular.name}
+					listArray={popular.list}
+					chooseList={handleInputChange}
+					changeButtonText={changeButtonText}
+				/>
+				<Lists
+					listName={vegetarian.name}
+					listArray={vegetarian.list}
+					chooseList={setInputValue}
+					changeButtonText={changeButtonText}
+				/>
+				<Lists
+					listName={cheap.name}
+					listArray={cheap.list}
+					chooseList={setInputValue}
+					changeButtonText={changeButtonText}
+				/>
+			</div>
+			<Footer />
+		</div>
 	)
 }
 
