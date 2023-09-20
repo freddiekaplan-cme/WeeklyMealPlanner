@@ -42,9 +42,9 @@ function Inputs({
 					commas:
 				</label>
 			</p>
-			<div className="mt-4 h-10 flex items-center">
+			<div className="mt-4 h-10 flex items-center sm:max-w-xl">
 				<input
-					className="rounded-md border-green-800 border-2 p-2 h-full flex-grow sm:max-w-xl"
+					className="rounded-md border-green-800 border-2 p-2 h-full flex-grow "
 					type="text"
 					id="myInput"
 					value={localInputValue}

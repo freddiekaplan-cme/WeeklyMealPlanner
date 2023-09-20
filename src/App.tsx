@@ -58,7 +58,7 @@ function App() {
 
 	return (
 		<div>
-			<div className="font-dm px-8 md:px-12 text-amber-950 bg-amber-50">
+			<div className="font-dm px-8 md:px-12 text-amber-950 bg-amber-50 pb-8">
 				<Header
 					title="Weekly Meal Planner"
 					subtitle="~ What's for dinner tonight? ~"
@@ -72,40 +72,48 @@ function App() {
 					sat={meal[5]}
 					sun={meal[6]}
 				/>
-				<Inputs
-					inputValue={inputValue}
-					onInputChange={handleInputChange}
-					chooseList={setInputValue}
-					changeButtonText={changeButtonText}
-				/>
-				<button
-					className="rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
-					onClick={planWeek}
-				>
-					{buttonText}
-				</button>
+				<div className="flex sm:justify-center">
+					<div className="flex-col">
+						<Inputs
+							inputValue={inputValue}
+							onInputChange={handleInputChange}
+							chooseList={setInputValue}
+							changeButtonText={changeButtonText}
+						/>
+						<button
+							className="rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
+							onClick={planWeek}
+						>
+							{buttonText}
+						</button>
 
-				<h2 className="text-lg mt-8 font-bold">
-					Choose from existing lists
-				</h2>
-				<Lists
-					listName={popular.name}
-					listArray={popular.list}
-					chooseList={handleInputChange}
-					changeButtonText={changeButtonText}
-				/>
-				<Lists
-					listName={vegetarian.name}
-					listArray={vegetarian.list}
-					chooseList={setInputValue}
-					changeButtonText={changeButtonText}
-				/>
-				<Lists
-					listName={cheap.name}
-					listArray={cheap.list}
-					chooseList={setInputValue}
-					changeButtonText={changeButtonText}
-				/>
+						<h2 className="text-lg mt-8 font-bold">
+							Choose from existing lists
+						</h2>
+						<p>
+							You can edit the list in the text field. Hit the
+							Plan button when you're ready.
+						</p>
+						<Lists
+							listName={popular.name}
+							listArray={popular.list}
+							chooseList={handleInputChange}
+							changeButtonText={changeButtonText}
+						/>
+						<Lists
+							listName={vegetarian.name}
+							listArray={vegetarian.list}
+							chooseList={setInputValue}
+							changeButtonText={changeButtonText}
+						/>
+						<Lists
+							listName={cheap.name}
+							listArray={cheap.list}
+							chooseList={setInputValue}
+							changeButtonText={changeButtonText}
+						/>
+					</div>
+				</div>
 			</div>
 			<Footer />
 		</div>
