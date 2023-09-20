@@ -1,5 +1,5 @@
 const vegetarian = {
-	name: "Vegetarian",
+	name: "🥦 Vegetarian",
 	list: [
 		"Halloumi and potatoes",
 		"Nuggets and french fries",
@@ -33,7 +33,7 @@ const vegetarian = {
 }
 
 const popular = {
-	name: "Popular",
+	name: "🍕 Popular",
 	list: [
 		"Hamburger and French Fries",
 		"Pizza",
@@ -59,7 +59,7 @@ const popular = {
 }
 
 const cheap = {
-	name: "Affordable",
+	name: "🍜 Affordable",
 	list: [
 		"Oatmeal",
 		"Spaghetti with Tomato Sauce",

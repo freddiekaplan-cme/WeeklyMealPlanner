@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 interface ListProps {
 	listName: string
 	listArray: string[]
@@ -11,6 +13,7 @@ const Lists = ({
 	chooseList,
 	changeButtonText,
 }: ListProps) => {
+	const [hiddenList, setHiddenList] = useState<boolean>(false)
 	const readableList = listArray.join(", ")
 
 	const handleButtonClick = () => {
@@ -18,17 +21,26 @@ const Lists = ({
 		changeButtonText("setAsPlan")
 	}
 
+	const toggleHiddenList = (): void => {
+		setHiddenList(!hiddenList)
+	}
+
 	return (
-		<div className="py-4">
-			<h3 className="text-md font-bold">{listName}</h3>
-			<p>{readableList}</p>
-			<p>
-				<button
-					className="rounded-md mt-4 bg-amber-400 hover:bg-amber-300 w-36 h-12"
-					onClick={handleButtonClick}
-				>
-					Use List
-				</button>
+		<div className="pt-4">
+			<button
+				className="rounded-md mt-4 text-white bg-amber-500 hover:bg-amber-400 w-36 h-12"
+				onClick={handleButtonClick}
+			>
+				{listName}
+			</button>
+			<div
+				onClick={toggleHiddenList}
+				className="mt-2 text-xs cursor-pointer"
+			>
+				Show the list
+			</div>
+			<p className={`mt-4 ${hiddenList ? "" : "hidden"}`}>
+				{readableList}
 			</p>
 		</div>
 	)

@@ -28,8 +28,12 @@ function App() {
 		return shuffledArray
 	}
 
-	const changeButtonText = (): void => {
+	const changeButtonText = (value: string): void => {
 		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
+
+		if (value === buttonPlan) {
+			setButtonText(buttonPlan)
+		}
 
 		if (buttonText === buttonPlan && inputValue !== "") {
 			toggleHidden(false)
@@ -57,7 +61,7 @@ function App() {
 		].slice(0, 7)
 
 		setMeal(filledMealArray)
-		changeButtonText()
+		changeButtonText("")
 	}
 
 	const handleInputChange = (newInputValue: string) => {
