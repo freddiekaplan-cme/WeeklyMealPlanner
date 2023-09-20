@@ -11,6 +11,7 @@ function App() {
 	const [inputValue, setInputValue] = useState<string>("")
 	const buttonPlan = "Plan Your Week"
 	const [buttonText, setButtonText] = useState<string>(buttonPlan)
+	const [isHidden, setIsHidden] = useState(false)
 
 	const shuffleArray = (array: string[]) => {
 		const shuffledArray = [...array]
@@ -30,6 +31,13 @@ function App() {
 	const changeButtonText = (listButton: string | null) => {
 		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
 		listButton === "setAsPlan" ? setButtonText(buttonPlan) : listButton
+		toggleHidden()
+	}
+
+	const toggleHidden = () => {
+		if (inputValue !== "") {
+			setIsHidden(!isHidden)
+		}
 	}
 
 	const planWeek = (): void => {
@@ -61,17 +69,26 @@ function App() {
 			<div className="font-dm px-8 md:px-12 text-amber-950 bg-amber-50 pb-8">
 				<Header
 					title="Weekly Meal Planner"
-					subtitle="~ What's for dinner tonight? ~"
+					subtitle="~ What's for dinner next week? ~"
 				/>
-				<Week
-					mon={meal[0]}
-					tue={meal[1]}
-					wed={meal[2]}
-					thu={meal[3]}
-					fri={meal[4]}
-					sat={meal[5]}
-					sun={meal[6]}
-				/>
+				<div
+					className={`text-center p-8 text-8xl ${
+						isHidden ? "hidden" : ""
+					}`}
+				>
+					🍽️
+				</div>
+				<div className={`${isHidden ? "" : "hidden"}`}>
+					<Week
+						mon={meal[0]}
+						tue={meal[1]}
+						wed={meal[2]}
+						thu={meal[3]}
+						fri={meal[4]}
+						sat={meal[5]}
+						sun={meal[6]}
+					/>
+				</div>
 				<div className="flex sm:justify-center">
 					<div className="flex-col">
 						<Inputs
