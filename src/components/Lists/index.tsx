@@ -19,7 +19,7 @@ const Lists = ({
 	}
 
 	return (
-		<div className="py-4 max-w-xl">
+		<div className="py-4">
 			<h3 className="text-md font-bold">{listName}</h3>
 			<p>{readableList}</p>
 			<p>

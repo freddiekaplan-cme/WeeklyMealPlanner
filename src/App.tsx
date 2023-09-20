@@ -11,7 +11,7 @@ function App() {
 	const [inputValue, setInputValue] = useState<string>("")
 	const buttonPlan = "Plan Your Week"
 	const [buttonText, setButtonText] = useState<string>(buttonPlan)
-	const [isHidden, setIsHidden] = useState(false)
+	const [isHidden, setIsHidden] = useState(true)
 
 	const shuffleArray = (array: string[]) => {
 		const shuffledArray = [...array]
@@ -28,16 +28,16 @@ function App() {
 		return shuffledArray
 	}
 
-	const changeButtonText = (listButton: string | null) => {
+	const changeButtonText = (): void => {
 		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
-		listButton === "setAsPlan" ? setButtonText(buttonPlan) : listButton
-		toggleHidden()
+
+		if (buttonText === buttonPlan && inputValue !== "") {
+			toggleHidden(false)
+		}
 	}
 
-	const toggleHidden = () => {
-		if (inputValue !== "") {
-			setIsHidden(!isHidden)
-		}
+	const toggleHidden = (value: boolean) => {
+		setIsHidden(value)
 	}
 
 	const planWeek = (): void => {
@@ -57,7 +57,7 @@ function App() {
 		].slice(0, 7)
 
 		setMeal(filledMealArray)
-		changeButtonText("")
+		changeButtonText()
 	}
 
 	const handleInputChange = (newInputValue: string) => {
@@ -72,13 +72,13 @@ function App() {
 					subtitle="~ What's for dinner next week? ~"
 				/>
 				<div
-					className={`text-center p-8 text-8xl ${
-						isHidden ? "hidden" : ""
+					className={`text-center p-14 text-9xl ${
+						isHidden ? "" : "hidden"
 					}`}
 				>
 					🍽️
 				</div>
-				<div className={`${isHidden ? "" : "hidden"}`}>
+				<div className={`${isHidden ? "hidden" : ""}`}>
 					<Week
 						mon={meal[0]}
 						tue={meal[1]}
@@ -90,12 +90,13 @@ function App() {
 					/>
 				</div>
 				<div className="flex sm:justify-center">
-					<div className="flex-col">
+					<div className="flex-col max-w-xl">
 						<Inputs
 							inputValue={inputValue}
 							onInputChange={handleInputChange}
 							chooseList={setInputValue}
 							changeButtonText={changeButtonText}
+							toggleHidden={toggleHidden}
 						/>
 						<button
 							className="rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
@@ -104,11 +105,10 @@ function App() {
 							{buttonText}
 						</button>
 
-						<h2 className="text-lg mt-8 font-bold">
-							Choose from existing lists
-						</h2>
+						<h2 className="text-lg mt-8 font-bold">Pick a list</h2>
 						<p>
-							You can edit the list in the text field. Hit the
+							Get your meals from a premade list of dishes. Edit
+							the list in the text field if you want to. Hit the
 							Plan button when you're ready.
 						</p>
 						<Lists

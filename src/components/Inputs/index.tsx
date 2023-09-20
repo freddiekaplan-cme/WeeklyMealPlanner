@@ -5,6 +5,7 @@ interface InputsProps {
 	onInputChange: (value: string) => void
 	chooseList: (list: string) => void
 	changeButtonText: (value: string) => void
+	toggleHidden: (value: boolean) => void
 }
 
 function Inputs({
@@ -12,6 +13,7 @@ function Inputs({
 	onInputChange,
 	chooseList,
 	changeButtonText,
+	toggleHidden,
 }: InputsProps) {
 	const [localInputValue, setLocalInputValue] = useState<string>("")
 
@@ -31,15 +33,16 @@ function Inputs({
 		setLocalInputValue("")
 		onInputChange("")
 		changeButtonText("setAsPlan")
+		toggleHidden(true)
 	}
 
 	return (
 		<div>
-			<h2 className="text-lg font-bold">List your meals</h2>
+			<h2 className="text-lg font-bold">Your favourite dishes</h2>
 			<p>
 				<label htmlFor="myInput">
-					Write or paste a list of at least seven meals, separate with
-					commas:
+					Write or paste a list of at least seven dishes, separate
+					with commas:
 				</label>
 			</p>
 			<div className="mt-4 h-10 flex items-center sm:max-w-xl">
