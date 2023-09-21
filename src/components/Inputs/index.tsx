@@ -5,6 +5,7 @@ interface InputsProps {
 	onInputChange: (value: string) => void
 	changeButtonText: (value: string) => void
 	toggleHidden: (value: boolean) => void
+	handleEnterPress: () => void
 }
 
 function Inputs({
@@ -12,6 +13,7 @@ function Inputs({
 	onInputChange,
 	changeButtonText,
 	toggleHidden,
+	handleEnterPress,
 }: InputsProps) {
 	const [localInputValue, setLocalInputValue] = useState<string>("")
 
@@ -34,6 +36,12 @@ function Inputs({
 		toggleHidden(true)
 	}
 
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+		if (e.key === "Enter") {
+			handleEnterPress()
+		}
+	}
+
 	return (
 		<div>
 			<h2 className="text-lg font-bold">Your favourite dishes</h2>
@@ -50,6 +58,7 @@ function Inputs({
 					id="myInput"
 					value={localInputValue}
 					onChange={handleInputChange}
+					onKeyDown={handleKeyDown}
 					placeholder="lasagna, salad, noodles"
 				/>
 				<button

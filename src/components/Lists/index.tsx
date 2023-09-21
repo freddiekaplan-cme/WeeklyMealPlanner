@@ -37,9 +37,13 @@ const Lists = ({
 				onClick={toggleHiddenList}
 				className="mt-2 text-xs cursor-pointer"
 			>
-				Show the list
+				Show dishes
 			</div>
-			<p className={`mt-4 ${hiddenList ? "" : "hidden"}`}>
+			<p
+				className={`transition-all duration-700 ease-in-out overflow-hidden mt-4 ${
+					hiddenList ? "h-full opacity-100" : "h-0 opacity-0"
+				}`}
+			>
 				{readableList}
 			</p>
 		</div>

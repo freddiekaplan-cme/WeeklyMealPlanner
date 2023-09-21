@@ -31,12 +31,13 @@ function App() {
 	const changeButtonText = (value: string): void => {
 		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
 
-		if (value === "setAsPlan") {
-			setButtonText(buttonPlan)
-		}
-
 		if (buttonText === buttonPlan && inputValue !== "") {
 			toggleHidden(false)
+		}
+
+		if (value === "setAsPlan") {
+			setButtonText(buttonPlan)
+			toggleHidden(true)
 		}
 	}
 
@@ -100,6 +101,7 @@ function App() {
 							onInputChange={handleInputChange}
 							changeButtonText={changeButtonText}
 							toggleHidden={toggleHidden}
+							handleEnterPress={planWeek}
 						/>
 						<button
 							className="rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
