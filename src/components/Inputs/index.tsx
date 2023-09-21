@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react"
 interface InputsProps {
 	inputValue: string
 	onInputChange: (value: string) => void
-	chooseList: (list: string) => void
 	changeButtonText: (value: string) => void
 	toggleHidden: (value: boolean) => void
 }
@@ -11,7 +10,6 @@ interface InputsProps {
 function Inputs({
 	inputValue,
 	onInputChange,
-	chooseList,
 	changeButtonText,
 	toggleHidden,
 }: InputsProps) {

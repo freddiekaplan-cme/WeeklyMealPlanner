@@ -31,7 +31,7 @@ function App() {
 	const changeButtonText = (value: string): void => {
 		inputValue !== "" ? setButtonText("Shuffle") : setButtonText(buttonPlan)
 
-		if (value === buttonPlan) {
+		if (value === "setAsPlan") {
 			setButtonText(buttonPlan)
 		}
 
@@ -98,7 +98,6 @@ function App() {
 						<Inputs
 							inputValue={inputValue}
 							onInputChange={handleInputChange}
-							chooseList={setInputValue}
 							changeButtonText={changeButtonText}
 							toggleHidden={toggleHidden}
 						/>
