@@ -11,7 +11,8 @@ function App() {
 	const [inputValue, setInputValue] = useState<string>("")
 	const buttonPlan = "Plan Your Week"
 	const [buttonText, setButtonText] = useState<string>(buttonPlan)
-	const [isHidden, setIsHidden] = useState(true)
+	const [isHidden, setIsHidden] = useState<boolean>(true)
+	// const [textArea, setTextArea] = useState<object>({ height:"10px" })
 
 	const shuffleArray = (array: string[]) => {
 		const shuffledArray = [...array]
@@ -69,6 +70,10 @@ function App() {
 		setInputValue(newInputValue)
 	}
 
+	// const resetTextArea = () => {
+	// 	setTextArea(true)
+	// }
+
 	return (
 		<div>
 			<div className="font-dm px-8 md:px-12 text-amber-950 bg-amber-50 pb-8">
@@ -104,7 +109,7 @@ function App() {
 							handleEnterPress={planWeek}
 						/>
 						<button
-							className="rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
+							className="drop-shadow-md rounded-md mt-4 hover:bg-green-500 w-36 h-12 bg-green-600 text-white"
 							onClick={planWeek}
 						>
 							{buttonText}

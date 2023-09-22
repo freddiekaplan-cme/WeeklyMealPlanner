@@ -16,13 +16,14 @@ function Inputs({
 	handleEnterPress,
 }: InputsProps) {
 	const [localInputValue, setLocalInputValue] = useState<string>("")
+	const [textareaKey, setTextareaKey] = useState<number>(0)
 
 	useEffect(() => {
 		setLocalInputValue(inputValue)
 	}, [inputValue])
 
 	const handleInputChange = (
-		e: React.ChangeEvent<HTMLInputElement>,
+		e: React.ChangeEvent<HTMLTextAreaElement>,
 	): void => {
 		const newValue = e.target.value
 		setLocalInputValue(newValue)
@@ -34,9 +35,12 @@ function Inputs({
 		onInputChange("")
 		changeButtonText("setAsPlan")
 		toggleHidden(true)
+		setTextareaKey((prevKey) => prevKey + 1)
 	}
 
-	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+	const handleKeyDown = (
+		e: React.KeyboardEvent<HTMLTextAreaElement>,
+	): void => {
 		if (e.key === "Enter") {
 			handleEnterPress()
 		}
@@ -51,10 +55,10 @@ function Inputs({
 					with commas:
 				</label>
 			</p>
-			<div className="mt-4 h-10 flex items-center sm:max-w-xl">
-				<input
-					className="rounded-md border-green-800 border-2 p-2 h-full flex-grow "
-					type="text"
+			<div className="mt-4 flex items-center sm:max-w-xl">
+				<textarea
+					key={textareaKey}
+					className="rounded-md h-10 border-green-800 border-2 p-2  flex-grow overflow-auto block"
 					id="myInput"
 					value={localInputValue}
 					onChange={handleInputChange}
@@ -62,7 +66,7 @@ function Inputs({
 					placeholder="lasagna, salad, noodles"
 				/>
 				<button
-					className="text-sm rounded-md ml-2 hover:bg-red-400 p-2 bg-red-500 text-white h-full flex-grow-0"
+					className="text-sm drop-shadow-md rounded-md ml-2 hover:bg-red-400 p-2 bg-red-500 text-white h-full flex-grow-0"
 					onClick={clearInput}
 				>
 					Clear

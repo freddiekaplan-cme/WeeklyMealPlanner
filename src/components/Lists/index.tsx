@@ -28,7 +28,7 @@ const Lists = ({
 	return (
 		<div className="pt-4">
 			<button
-				className="rounded-md mt-4 text-white bg-amber-500 hover:bg-amber-400 w-36 h-12"
+				className="drop-shadow-md rounded-md mt-4 text-white bg-amber-500 hover:bg-amber-400 w-36 h-12"
 				onClick={handleButtonClick}
 			>
 				{listName}
